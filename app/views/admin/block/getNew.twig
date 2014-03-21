@@ -1,0 +1,9 @@
+<form action="{{ URL_route('admin_post_block', block.id) }}" method="POST">
+  <input type="text" name="block[name]" value="{{ block.name }}" placeholder="Name..." data-slugify-src="blockName" />
+  <input type="text" name="block[slug]" value="{{ block.slug }}" placeholder="Slug..." data-slugify-dest="blockName" />
+  {% for field in block.fields %}
+    {% include "admin.block._field" with { "field":field, "name":"block[fields][{{ loop.index }}]", "loop":loop } %}
+  {% endfor %}
+  {% include "admin.block._field" with { "name":"new_field" } %}
+  <input type="submit" />
+</form>

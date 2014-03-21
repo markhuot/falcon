@@ -1,0 +1,9 @@
+<form action="{{ URL_route('admin_post_content', content.id) }}" method="post">
+<input type="hidden" name="contentType[id]" value="{{ contentType.id }}" />
+{% for region in contentType.regions %}
+  <fieldset>
+    <legend><span>{{ region.name }}</span></legend>
+    <button name="addBlock" value="{{ region.id }}">Add Block</a>
+  </fieldset>
+{% endfor %}
+</form>

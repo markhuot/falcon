@@ -1,0 +1,5 @@
+<form action="{{ URL_route('admin_post_content_type') }}" method="post">
+  <input type="text" name="contentType[name]" value="" placeholder="Name..." data-slugify-src="contentTypeName" />
+  <input type="text" name="contentType[slug]" value="" placeholder="Slug..." data-slugify-dest="contentTypeName" />
+  <input type="submit" />
+</form>

@@ -1,0 +1,5 @@
+<form action="{{ URL_route('admin_post_choose_block', [content.id, region.id]) }}" method="POST">
+{% for block in blocks %}
+  <button name="blockId" value="{{ block.id }}">{{ block.name }}</button>
+{% endfor %}
+</form>

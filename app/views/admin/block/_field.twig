@@ -1,0 +1,11 @@
+<p>
+  <input type="text" name="{{ name }}[name]" value="{{ field.name }}" placeholder="Name..." data-slugify-src="new_field_name" />
+  <input type="text" name="{{ name }}[slug]" value="{{ field.slug }}" placeholder="Slug..." data-slugify-dest="new_field_name" />
+  <select name="{{ name }}[type]">
+    <option value="text">Text</option>
+    <option value="paragraph">Paragraph</option>
+  </select>
+  {% if field is not defined %}
+    <input type="submit" name="add" value="Add" />
+  {% endif %}
+</p>

@@ -1,0 +1,22 @@
+<h1>{{ contentType.name }} <small>{{ contentType.slug }}</small></h1>
+
+<h2>Regions</h2>
+
+<table>
+  {% for region in contentType.regions %}
+    <tr>
+      <td>{{ region.name }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<form action="{{ URL_route('admin_post_add_region_to_content_type', contentType.id) }}" method="post">
+  <select name="addRegionId">
+    {% for region in regions %}
+      <option value="{{ region.id }}">{{ region.name }}</option>
+    {% endfor %}
+  </select>
+  <input type="submit" value="Add" />
+</form>
+
+<a href="{{ URL_route('admin_new_region') }}">Add new</a>

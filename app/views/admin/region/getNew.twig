@@ -1,0 +1,5 @@
+<form action="{{ URL_route('admin_post_region', region.id) }}" method="post">
+  <input type="text" name="region[name]" value="{{ region.name }}" placeholder="Name..." data-slugify-src="regionName" />
+  <input type="text" name="region[slug]" value="{{ region.slug }}" placeholder="Slug..." data-slugify-dest="regionName" />
+  <input type="submit" />
+</form>
