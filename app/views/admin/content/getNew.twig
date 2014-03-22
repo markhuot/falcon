@@ -8,7 +8,12 @@
 			<legend><span>{{ region.name }}</span></legend>
 			<ul>
 				{% for block in content.blocksIn(region) %}
-					<li>{{ block.id }} - {{ block.block.name }}</li>
+					<li>
+						{{ block.id }} - {{ block.block.name }}
+						{% for field in block.block.fields %}
+							[{{ field.name }} / {{ field.type }}]
+						{% endfor %}
+					</li>
 				{% endfor %}
 			</ul>
 			<button name="addBlock" value="{{ region.id }}">Add Block</a>
