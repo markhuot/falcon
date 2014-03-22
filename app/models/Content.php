@@ -14,7 +14,10 @@ class Content extends Eloquent {
 
   public function blocksIn(\Region $region=null)
   {
-    return BlockData::where('content_id', '=', $this->id)->where('region_id', '=', $region->id)->get();
+    return BlockData::where('content_id', '=', $this->id)
+      ->where('region_id', '=', $region->id)
+      ->get()
+    ;
   }
 
 }

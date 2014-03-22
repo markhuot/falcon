@@ -13,7 +13,7 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
-  Route::get('dashboard', ['as' => 'admin_dashboard', 'uses' => 'DashboardController@getIndex']);
+  Route::get('/', function() { return Redirect::route('admin_list_content'); });
 
   Route::get('content-type/new', ['as' => 'admin_new_content_type', 'uses' => 'ContentTypeController@getNew']);
   Route::post('content-type/{contentType?}', ['as' => 'admin_post_content_type', 'uses' => 'ContentTypeController@postNew']);
