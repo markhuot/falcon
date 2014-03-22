@@ -3,21 +3,13 @@
 	<title>{{ pageTitle|default('Falcon') }}</title>
 </head>
 <body>
+
 {% block navigation %}
-	<ul>
-		<li>
-			<a href="{{ URL_route('admin_list_content') }}">Content</a>
-			<ul>
-				{% for contentType in contentTypes %}
-					<li><a href="{{ URL_route('admin_list_content_in_type', contentType.id) }}">{{ contentType.name }}</a></li>
-				{% endfor %}
-			</ul>
-		</li>
-	</ul>
-	<ul>
-		<li><a href="{{ URL_route('admin_list_content_types') }}">Content Types</a></li>
-	</ul>
+	{% include "admin._navigation" %}
 {% endblock %}
-{% block content %}{% endblock %}
+
+{% block content %}
+{% endblock %}
+
 </body>
 </head>
