@@ -15,6 +15,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 
   Route::get('/', function() { return Redirect::route('admin_list_content'); });
 
+  Route::get('content-type', ['as' => 'admin_list_content_types', 'uses' => 'ContentTypeController@getList']);
   Route::get('content-type/new', ['as' => 'admin_new_content_type', 'uses' => 'ContentTypeController@getNew']);
   Route::post('content-type/{contentType?}', ['as' => 'admin_post_content_type', 'uses' => 'ContentTypeController@postNew']);
   Route::post('content-type/{contentType}/add-region', ['as' => 'admin_post_add_region_to_content_type', 'uses' => 'ContentTypeController@postAddRegion']);

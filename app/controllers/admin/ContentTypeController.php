@@ -4,6 +4,13 @@ namespace Admin;
 
 class ContentTypeController extends \BaseController {
 
+  public function getList()
+  {
+    return \View::make('admin.content-type.getList')
+      ->with('contentTypes', \ContentType::all())
+    ;
+  }
+
   public function getNew()
   {
     return \View::make('admin.content-type.getNew');

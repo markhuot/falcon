@@ -1,19 +1,29 @@
-<table border="1">
-	{% for entry in content %}
-		<tr>
-			<td>{{ entry.id }}</td>
-			<td><a href="{{ URL_route('admin_show_content', entry.id) }}">{{ entry.title }}</a></td>
-			<td>{{ entry.description }}</td>
-			<td><a href="{{ URL_route('admin_show_content', entry.id) }}">Edit</a></td>
-		</tr>
-	{% endfor %}
-</table>
+{% extends "admin/_layout" %}
 
-<fieldset>
-<legend>New</legend>
-<ul>
-	{% for contentType in contentTypes %}
-		<li><a href="{{ URL_route('admin_new_content', contentType.id) }}">{{ contentType.name }}</a></li>
-	{% endfor %}
-</ul>
-</fieldset>
+{% block content %}
+	<table border="1">
+		<tr>
+			<th>id</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</tr>
+		{% for entry in content %}
+			<tr>
+				<td>{{ entry.id }}</td>
+				<td><a href="{{ URL_route('admin_show_content', entry.id) }}">{{ entry.title }}</a></td>
+				<td>{{ entry.description }}</td>
+				<td><a href="{{ URL_route('admin_show_content', entry.id) }}">Edit</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	<fieldset>
+	<legend>New</legend>
+	<ul>
+		{% for contentType in contentTypes %}
+			<li><a href="{{ URL_route('admin_new_content', contentType.id) }}">{{ contentType.name }}</a></li>
+		{% endfor %}
+	</ul>
+	</fieldset>
+{% endblock %}

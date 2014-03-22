@@ -1,0 +1,22 @@
+{% extends "admin/_layout" %}
+
+{% block content %}
+	<table border="1">
+		<tr>
+			<th>id</th>
+			<th>Name</th>
+			<th>Regions</th>
+			<th></th>
+		</tr>
+		{% for contentType in contentTypes %}
+			<tr>
+				<td>{{ contentType.id }}</td>
+				<td><a href="{{ URL_route('admin_show_content_type', contentType.id) }}">{{ contentType.name }}</a></td>
+				<td>{% for region in contentType.regions %}{{ region.name }} / {% endfor %}</td>
+				<td><a href="{{ URL_route('admin_show_content_type', contentType.id) }}">Edit</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	<a href="{{ URL_route('admin_new_content_type') }}">New Content Type</a>
+{% endblock %}
