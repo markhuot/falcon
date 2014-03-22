@@ -66,6 +66,10 @@ class CreateContentTable extends Migration {
       $table->increments('id');
       $table->integer('content_id');
       $table->foreign('content_id')->references('id')->on('contents');
+      $table->integer('region_id');
+      $table->foreign('region_id')->references('id')->on('regions');
+      $table->integer('block_id');
+      $table->foreign('block_id')->references('id')->on('blocks');
       $table->timestamps();
     });
 
