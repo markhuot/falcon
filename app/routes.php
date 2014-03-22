@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
   Route::get('block/{block}', ['as' => 'admin_show_block', 'uses' => 'BlockController@getShow']);
 
   Route::get('content', ['as' => 'admin_list_content', 'uses' => 'ContentController@getList']);
+  Route::get('content/list/{contentType}', ['as' => 'admin_list_content_in_type', 'uses' => 'ContentController@getList']);
   Route::get('content/new/{contentType}', ['as' => 'admin_new_content', 'uses' => 'ContentController@getNew']);
   Route::get('content/{content}', ['as' => 'admin_show_content', 'uses' => 'ContentController@getShow']);
   Route::post('content/{content?}', ['as' => 'admin_post_content', 'uses' => 'ContentController@postNew']);

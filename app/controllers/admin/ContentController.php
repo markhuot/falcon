@@ -13,10 +13,12 @@ use View;
 
 class ContentController extends BaseController {
 
-  public function getList()
+  public function getList(\ContentType $contentType=null)
   {
+    $content = @$contentType->content ?: \Content::all();
+
     return View::make('admin.content.getList')
-      ->with('content', Content::all())
+      ->with('content', $content)
       ->with('contentTypes', ContentType::all())
     ;
   }
