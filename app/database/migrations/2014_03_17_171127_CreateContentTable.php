@@ -70,6 +70,7 @@ class CreateContentTable extends Migration {
       $table->foreign('region_id')->references('id')->on('regions');
       $table->integer('block_id');
       $table->foreign('block_id')->references('id')->on('blocks');
+      $table->integer('order')->default(0);
       $table->timestamps();
     });
 

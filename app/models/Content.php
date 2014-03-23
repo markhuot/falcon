@@ -16,6 +16,7 @@ class Content extends Eloquent {
   {
     return BlockData::where('content_id', '=', $this->id)
       ->where('region_id', '=', $region->id)
+      ->orderBy(DB::raw('`order` = 0 asc, `order`'), 'asc')
       ->get()
     ;
   }

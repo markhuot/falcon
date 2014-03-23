@@ -14,6 +14,7 @@
 							{{ field.renderInputFieldFor(blockData) }}
 						</div>
 					{% endfor %}
+					<input type="text" name="blockData[{{ blockData.id }}][order]" value="{{ loop.index }}" />
 					<button name="removeBlockData" value="{{ blockData.id }}">Remove</a>
 				</fieldset>
 			{% endfor %}
