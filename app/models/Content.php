@@ -12,7 +12,7 @@ class Content extends Eloquent {
     return $this->hasMany('BlockData');
   }
 
-  public function blocksIn(\Region $region=null)
+  public function blockDataIn(\Region $region=null)
   {
     return BlockData::where('content_id', '=', $this->id)
       ->where('region_id', '=', $region->id)

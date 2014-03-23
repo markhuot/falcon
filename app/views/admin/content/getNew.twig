@@ -6,12 +6,12 @@
 	{% for region in contentType.regions %}
 		<fieldset>
 			<legend><span>{{ region.name }}</span></legend>
-			{% for block in content.blocksIn(region) %}
+			{% for blockData in content.blockDataIn(region) %}
 				<fieldset>
-					<legend>{{ block.id }} - {{ block.block.name }}</legend>
-					{% for field in block.block.fields %}
+					<legend>{{ blockData.id }} - {{ blockData.block.name }}</legend>
+					{% for field in blockData.block.fields %}
 						<div>
-							{{ field.renderInputField() }}
+							{{ field.renderInputFieldFor(blockData) }}
 						</div>
 					{% endfor %}
 				</fieldset>

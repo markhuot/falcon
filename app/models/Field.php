@@ -32,11 +32,19 @@ class Field extends Eloquent {
     return $this->belongsTo('Block');
   }
 
-  public function renderInputField()
+  public function renderInputFieldFor(BlockData $blockData)
   {
     if ($this->inputObject === null) {
+      $contentId = $blockData->content_id;
+      $regionId = $blockData->region_id;
+      $blockId = $blockData->block_id;
+      $blockName = $blockData->block->slug;
+      $fieldName = $this->slug;
+
+      $name = "block_data[{$contentId}][{$regionId}][{$blockId}][{$blockName}_{$fieldName}]";
+      
       $typeClass = $this->type;
-      $this->inputObject = new $typeClass;
+      $this->inputObject = new $typeClass($name);
     }
 
     return new Twig_Markup($this->inputObject->renderInputField(), 'UTF-8');
