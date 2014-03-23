@@ -40,8 +40,8 @@ class ContentController extends BaseController {
     if ($data=Input::get('blockData')) {
       foreach ($data as $blockId => $blockValues) {
         $blockData = BlockData::findOrFail($blockId);
-        foreach ($blockValues as $key => $value) {
-          $blockData->{$key} = $value;
+        foreach ($blockValues as $blockKey => $blockValue) {
+          $blockData->{$blockKey} = $blockValue;
         }
         $blockData->save();
       }
