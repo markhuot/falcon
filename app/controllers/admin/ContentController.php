@@ -37,9 +37,35 @@ class ContentController extends BaseController {
       ContentType::findOrFail(Input::get('contentType.id'))->content()->save($content);
     }
 
+    if ($data=Input::get('blockData')) {
+      foreach ($data as $contentId => $regions) {
+        foreach ($regions as $regionId => $blocks) {
+          foreach ($blocks as $blockId => $blockData) {
+            $bd = BlockData::query()
+              ->where('content_id', '=', $contentId)
+              ->where('region_id', '=', $regionId)
+              ->where('block_id', '=', $blockId)
+              ->first()
+            ;
+            if ($bd) {
+              foreach ($blockData as $key => $value) {
+                if ($value === '') {
+                  $value = NULL;
+                }
+                $bd->{$key} = $value;
+              }
+              $bd->save();
+            }
+          }
+        }
+      }
+    }
+
     if ($regionId=Input::get('addBlock')) {
       return Redirect::route('admin_choose_block', [$content->id, $regionId]);
     }
+
+    return Redirect::route('admin_show_content', $content->id);
   }
 
   public function getChooseBlock(Content $content, Region $region)

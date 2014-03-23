@@ -41,7 +41,7 @@ class Field extends Eloquent {
       $blockName = $blockData->block->slug;
       $fieldName = $this->slug;
 
-      $name = "block_data[{$contentId}][{$regionId}][{$blockId}][{$blockName}_{$fieldName}]";
+      $name = "blockData[{$contentId}][{$regionId}][{$blockId}][{$blockName}_{$fieldName}]";
       
       $typeClass = $this->type;
       $this->inputObject = new $typeClass($name);
