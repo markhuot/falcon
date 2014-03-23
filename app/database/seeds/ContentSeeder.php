@@ -36,7 +36,7 @@ class ContentSeeder extends Seeder {
     $textBlockContentField = new Field([
       'name' => 'Content',
       'slug' => 'content',
-      'type' => 'text',
+      'type' => 'TextField',
     ]);
     $textBlock->fields()->save($textBlockContentField);
 
@@ -44,6 +44,12 @@ class ContentSeeder extends Seeder {
       'name' => 'Paragraph',
       'slug' => 'paragraph',
     ]);
+    $paragraphField = new Field([
+      'name' => 'Content',
+      'slug' => 'content',
+      'type' => 'ParagraphField',
+    ]);
+    $paragraphBlock->fields()->save($paragraphField);
 
     $blockquoteBlock = Block::create([
       'name' => 'Blockquote',
@@ -53,14 +59,14 @@ class ContentSeeder extends Seeder {
     $blockquoteQuoteField = new Field([
       'name' => 'Quote',
       'slug' => 'quote',
-      'type' => 'text',
+      'type' => 'TextField',
     ]);
     $blockquoteBlock->fields()->save($blockquoteQuoteField);
 
     $blockquoteCiteField = new Field([
       'name' => 'Cite',
       'slug' => 'cite',
-      'type' => 'text',
+      'type' => 'TextField',
     ]);
     $blockquoteBlock->fields()->save($blockquoteCiteField);
   }

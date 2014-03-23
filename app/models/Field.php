@@ -8,6 +8,8 @@ class Field extends Eloquent {
     'type',
   ];
 
+  private $inputObject;
+
   public static function boot()
   {
     parent::boot();
@@ -28,6 +30,16 @@ class Field extends Eloquent {
   public function block()
   {
     return $this->belongsTo('Block');
+  }
+
+  public function renderInputField()
+  {
+    if ($this->inputObject === null) {
+      $typeClass = $this->type;
+      $this->inputObject = new $typeClass;
+    }
+
+    return new Twig_Markup($this->inputObject->renderInputField(), 'UTF-8');
   }
 
 }

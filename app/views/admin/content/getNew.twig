@@ -6,16 +6,16 @@
 	{% for region in contentType.regions %}
 		<fieldset>
 			<legend><span>{{ region.name }}</span></legend>
-			<ul>
-				{% for block in content.blocksIn(region) %}
-					<li>
-						{{ block.id }} - {{ block.block.name }}
-						{% for field in block.block.fields %}
-							[{{ field.name }} / {{ field.type }}]
-						{% endfor %}
-					</li>
-				{% endfor %}
-			</ul>
+			{% for block in content.blocksIn(region) %}
+				<fieldset>
+					<legend>{{ block.id }} - {{ block.block.name }}</legend>
+					{% for field in block.block.fields %}
+						<div>
+							{{ field.renderInputField() }}
+						</div>
+					{% endfor %}
+				</fieldset>
+			{% endfor %}
 			<button name="addBlock" value="{{ region.id }}">Add Block</a>
 		</fieldset>
 	{% endfor %}
