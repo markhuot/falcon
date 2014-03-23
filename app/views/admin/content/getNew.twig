@@ -8,7 +8,7 @@
 			<legend><span>{{ region.name }}</span></legend>
 			{% for blockData in content.blockDataIn(region) %}
 				<fieldset>
-					<legend>{{ blockData.id }} - {{ blockData.block.name }}</legend>
+					<legend>{{ blockData.block.name }}</legend>
 					{% for field in blockData.block.fields %}
 						<div>
 							{{ field.renderInputFieldFor(blockData) }}
