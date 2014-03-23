@@ -1,15 +1,27 @@
 <html>
 <head>
 	<title>{{ pageTitle|default('Falcon') }}</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/screen.css" />
 </head>
 <body>
 
-{% block navigation %}
-	{% include "admin._navigation" %}
-{% endblock %}
+<div class="navigation">
+  {% block navigation %}
+  	{% include "admin._navigation" %}
+  {% endblock %}
+</div>
 
-{% block content %}
-{% endblock %}
+<div class="content-wrap">
+  <div class="content">
+    <div class="page" data-paged-uri="/{{ request_path() }}">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+
+<script src="/javascripts/jquery-2.1.0.min.js"></script>
+<script src="/javascripts/scripts.js"></script>
 
 </body>
 </head>

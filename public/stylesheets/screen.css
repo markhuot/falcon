@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 300; }
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #2b2f3b;
+  color: #fff;
+  padding: 20px 0; }
+  .navigation > ul > li > a {
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 5px 10px; }
+  .navigation > ul > li > ul {
+    margin-bottom: 20px; }
+    .navigation > ul > li > ul a {
+      display: block;
+      padding: 5px 10px; }
+    .navigation > ul > li > ul a:hover {
+      background: #272b35; }
+  .navigation a {
+    color: inherit; }
+
+.content-wrap {
+  padding-left: 200px; }
+
+.content {
+  position: relative;
+  min-height: 100%;
+  box-sizing: padding-box;
+  overflow: hidden; }
+
+fieldset {
+  padding: 20px; }
+
+.page {
+  padding: 40px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.95);
+  position: relative;
+  min-height: 100%; }
+  .page.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; }
+  .page .shield {
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.page {
+  margin-left: 0%; }
+  .page .shield {
+    background: rgba(0, 0, 0, 0.1); }
+  .page:hover {
+    margin-left: 0%; }
+
+.page + .page {
+  margin-left: 10%; }
+  .page + .page .shield {
+    background: rgba(0, 0, 0, 0.2); }
+  .page + .page:hover {
+    margin-left: 10%; }
+
+.page + .page + .page {
+  margin-left: 20%; }
+  .page + .page + .page .shield {
+    background: rgba(0, 0, 0, 0.3); }
+  .page + .page + .page:hover {
+    margin-left: 20%; }
+
+.page + .page + .page + .page {
+  margin-left: 30%; }
+  .page + .page + .page + .page .shield {
+    background: rgba(0, 0, 0, 0.4); }
+  .page + .page + .page + .page:hover {
+    margin-left: 30%; }
+
+.page + .page + .page + .page + .page {
+  margin-left: 40%; }
+  .page + .page + .page + .page + .page .shield {
+    background: rgba(0, 0, 0, 0.5); }
+  .page + .page + .page + .page + .page:hover {
+    margin-left: 40%; }
+
+.page + .page + .page + .page + .page + .page {
+  margin-left: 50%; }
+  .page + .page + .page + .page + .page + .page .shield {
+    background: rgba(0, 0, 0, 0.6); }
+  .page + .page + .page + .page + .page + .page:hover {
+    margin-left: 50%; }

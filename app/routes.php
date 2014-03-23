@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+Route::group(['prefix' => 'admin', 'before' => 'paged', 'namespace' => 'Admin'], function() {
 
   Route::get('/', function() { return Redirect::route('admin_list_content'); });
 
@@ -45,6 +45,10 @@ Route::group(['prefix' => 'api'], function() {
 
 });
 
+Route::filter('paged', function() {
+  header('X-Paged-Container: .content');
+});
+
 Route::bind('contentType', function($contentTypeId) { return ContentType::findOrFail($contentTypeId); });
 Route::bind('region', function($regionId) { return Region::findOrFail($regionId); });
 Route::bind('block', function($blockId) { return Block::findOrFail($blockId); });
@@ -55,3 +59,5 @@ View::composer('admin._navigation', function($view)
 {
   $view->with('contentTypes', ContentType::all());
 });
+
+View::share('layout', Request::header('X-Paged')!=true?'admin._layout':'admin._stub');
