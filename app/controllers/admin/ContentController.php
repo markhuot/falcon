@@ -51,6 +51,11 @@ class ContentController extends BaseController {
       return Redirect::route('admin_choose_block', [$content->id, $regionId]);
     }
 
+    if ($blockDataId=Input::get('removeBlockData')) {
+      BlockData::findOrFail($blockDataId)->delete();
+      return Redirect::route('admin_show_content', $content->id);
+    }
+
     return Redirect::route('admin_show_content', $content->id);
   }
 
