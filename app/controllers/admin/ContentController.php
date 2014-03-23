@@ -38,26 +38,12 @@ class ContentController extends BaseController {
     }
 
     if ($data=Input::get('blockData')) {
-      foreach ($data as $contentId => $regions) {
-        foreach ($regions as $regionId => $blocks) {
-          foreach ($blocks as $blockId => $blockData) {
-            $bd = BlockData::query()
-              ->where('content_id', '=', $contentId)
-              ->where('region_id', '=', $regionId)
-              ->where('block_id', '=', $blockId)
-              ->first()
-            ;
-            if ($bd) {
-              foreach ($blockData as $key => $value) {
-                if ($value === '') {
-                  $value = NULL;
-                }
-                $bd->{$key} = $value;
-              }
-              $bd->save();
-            }
-          }
+      foreach ($data as $blockId => $blockValues) {
+        $blockData = BlockData::findOrFail($blockId);
+        foreach ($blockValues as $key => $value) {
+          $blockData->{$key} = $value;
         }
+        $blockData->save();
       }
     }
 
