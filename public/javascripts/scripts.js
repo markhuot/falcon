@@ -48,9 +48,17 @@ function goToPage(event, href, method, formData)
       //   var key = 'X-Paged-Refresh'+(i>1?i:'');
       //   if (jqXHR.getResponseHeader(key)) {
       //     var refreshUri = jqXHR.getResponseHeader(key);
-      //     var page = $('.page[data-paged-uri^="'+refreshUri+'"]');
+      //     var page = $('.page[data-paged-uri="'+refreshUri+'"]');
       //     if (page.length) {
-      //       page.load(page.attr('data-paged-uri'));
+      //       $.ajax({
+      //         url: page.attr('paged-data-uri'),
+      //         type: 'get',
+      //         data: {},
+      //         headers: {'X-Paged':'true'},
+      //         success: function(data, code, jqXHR) {
+      //           page.html(data);
+      //         }
+      //       });
       //       continue;
       //     }
       //   }
