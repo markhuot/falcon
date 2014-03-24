@@ -53,6 +53,15 @@ function goToPage(event, href, method, formData)
         }
       }
 
+      if (jqXHR.getResponseHeader('X-Paged-Replace')) {
+        var popToUri = jqXHR.getResponseHeader('X-Paged-Replace');
+        var page = $('.page[data-paged-uri^="'+popToUri+'"]');
+        if (page.length) {
+          page.html(data).removeClass('back').nextAll('.page').remove();
+          return;
+        }
+      }
+
       if (jqXHR.getResponseHeader('X-Paged-Container')) {
         $('.page').addClass('back');
         $('.page:not(:has(.shield))').each(function() {
