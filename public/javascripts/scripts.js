@@ -13,8 +13,21 @@ $(document).on('click', 'a', function(event) {
   goToPage(event, $(this).attr('href'), 'get', {});
 });
 
+$(document).on('click', 'button', function(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  var form = $(this).closest('form');
+  var data = $(form).serializeArray();
+  data.push({
+    'name': $(this).attr('name'),
+    'value': $(this).attr('value')
+  });
+  console.log(data);
+  goToPage(event, $(form).attr('action'), $(form).attr('method'), data);
+});
+
 $(document).on('submit', 'form', function(event) {
-  goToPage(event, $(this).attr('action'), 'post', $(this).serialize());
+  goToPage(event, $(this).attr('action'), $(this).attr('method'), $(this).serialize());
 });
 
 function goToPage(event, href, method, formData)
