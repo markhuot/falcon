@@ -1,7 +1,7 @@
 {% extends layout %}
 
 {% block content %}
-	<form action="{{ URL_route('admin_post_content', content.id) }}" method="post">
+	<form class="edit" action="{{ URL_route('admin_post_content', content.id) }}" method="post">
 	<input type="hidden" name="contentType[id]" value="{{ contentType.id }}" />
 	{% for region in contentType.regions %}
 		<fieldset>
