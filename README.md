@@ -6,6 +6,8 @@
 2. Updating a current page needs to refresh back pages too. Probably with an `X-Paged-Refresh: /content` header.
 3. Ajax loading a new page needs to scroll to the top.
 4. Refreshing a background page needs to preserve scroll, as best we can.
+5. Update the edit view to use a more ["document" style](http://dribbble.com/shots/1275359-Document/attachments/175753)
+6. Use "timeline" inspiration for the fields. Region gets a dot, line goes down to blocks in region (with dots for each)
 
 ----
 
