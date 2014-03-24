@@ -44,21 +44,15 @@ function goToPage(event, href, method, formData)
         $('.page').remove();
       }
 
-      if (jqXHR.getResponseHeader('X-Paged-Pop-To')) {
-        var popToUri = jqXHR.getResponseHeader('X-Paged-Pop-To');
-        var page = $('.page[data-paged-uri="'+popToUri+'"]');
-        if (page.length) {
-          page.html(data).removeClass('back').nextAll('.page').remove();
-          return;
-        }
-      }
-
-      if (jqXHR.getResponseHeader('X-Paged-Replace')) {
-        var popToUri = jqXHR.getResponseHeader('X-Paged-Replace');
-        var page = $('.page[data-paged-uri^="'+popToUri+'"]');
-        if (page.length) {
-          page.html(data).removeClass('back').nextAll('.page').remove();
-          return;
+      for (i=0; i<10; i++) {
+        var key = 'X-Paged-Pop-To'+(i>1?i:'');
+        if (jqXHR.getResponseHeader(key)) {
+          var popToUri = jqXHR.getResponseHeader(key);
+          var page = $('.page[data-paged-uri^="'+popToUri+'"]');
+          if (page.length) {
+            page.html(data).removeClass('back').nextAll('.page').remove();
+            return;
+          }
         }
       }
 

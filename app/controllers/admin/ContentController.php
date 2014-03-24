@@ -87,7 +87,7 @@ class ContentController extends BaseController {
   public function getShow(Content $content)
   {
     header('X-Paged-Pop-To: /'.Request::path());
-    header('X-Paged-Replace: /admin/content/new');
+    header('X-Paged-Pop-To2: /admin/content/new');
     return View::make('admin.content.getNew')
       ->with('contentType', $content->contentType)
       ->with('content', $content)
