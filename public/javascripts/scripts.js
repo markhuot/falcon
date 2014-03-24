@@ -44,7 +44,7 @@ function goToPage(event, href, method, formData)
         $('.page').remove();
       }
 
-      for (i=0; i<10; i++) {
+      for (i=1; i<10; i++) {
         var key = 'X-Paged-Pop-To'+(i>1?i:'');
         if (jqXHR.getResponseHeader(key)) {
           var popToUri = jqXHR.getResponseHeader(key);
