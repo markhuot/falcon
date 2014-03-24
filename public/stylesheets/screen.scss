@@ -136,13 +136,43 @@ form.edit {
 
   fieldset {
     border: none;
+
+    &:hover > legend {
+      visibility: visible;
+    }
   }
 
   > fieldset {
-    padding: 0 0 100px;
+    padding: 0 0 50px;
   }
 
   legend {
     text-transform: uppercase;
+    visibility: hidden;
+  }
+
+  fieldset fieldset {
+    border: 1px dotted transparent;
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+
+  .order {
+    display: none;
+  }
+
+  button.remove {
+    display: none;
+  }
+
+  input, textarea {
+    -webkit-appearance: none;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200;
   }
 }

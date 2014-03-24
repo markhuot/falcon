@@ -130,7 +130,26 @@ form.edit {
   padding: 100px 15%; }
   form.edit fieldset {
     border: none; }
+    form.edit fieldset:hover > legend {
+      visibility: visible; }
   form.edit > fieldset {
-    padding: 0 0 100px; }
+    padding: 0 0 50px; }
   form.edit legend {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    visibility: hidden; }
+  form.edit fieldset fieldset {
+    border: 1px dotted transparent; }
+    form.edit fieldset fieldset:hover {
+      border-color: #ccc; }
+  form.edit .order {
+    display: none; }
+  form.edit button.remove {
+    display: none; }
+  form.edit input, form.edit textarea {
+    -webkit-appearance: none;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 200; }
