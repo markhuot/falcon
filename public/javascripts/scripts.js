@@ -64,13 +64,21 @@ function goToPage(event, href, method, formData)
         }
       }
 
-      for (i=1; i<10; i++) {
-        var key = 'X-Paged-Pop-To'+(i>1?i:'');
+      for (i=0; i<10; i++) {
+        var key = 'X-Paged-Pop-To'+(i==0?'':i);
         if (jqXHR.getResponseHeader(key)) {
           var popToUri = jqXHR.getResponseHeader(key);
-          var page = $('.page[data-paged-uri^="'+popToUri+'"]');
-          if (page.length) {
-            page.html(data).removeClass('back').nextAll('.page').remove();
+          var found = false;
+          $('.page').each(function() {
+            var page = $(this);
+            var regex = new RegExp(popToUri.replace(/\//g, '\\/'), 'i');
+            if (page.data('paged-uri').match(regex)) {
+              page.html(data).removeClass('back').nextAll('.page').remove();
+              found = true;
+              return false;
+            }
+          });
+          if (found) {
             return;
           }
         }
