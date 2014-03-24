@@ -84,19 +84,21 @@ function goToPage(event, href, method, formData)
         }
       }
 
-      if (jqXHR.getResponseHeader('X-Paged-Container')) {
-        $('.page').addClass('back');
-        $('.page:not(:has(.shield))').each(function() {
-          $(this).append('<a class="shield" href="'+$(this).attr('data-paged-uri')+'" />');
-        });
-        container = $(jqXHR.getResponseHeader('X-Paged-Container'));
-        page = $('<div class="page" />');
-        page.attr('data-paged-uri', uri);
-        page.append(data);
-        container.append(page);
-      }
+      $('.page').addClass('back');
+      $('.page:not(:has(.shield))').each(function() {
+        $(this).append('<a class="shield" href="'+$(this).attr('data-paged-uri')+'" />');
+      });
+      container = $('.content');
+      page = $('<div class="page" />');
+      page.attr('data-paged-uri', uri);
+      page.append(data);
+      container.append(page);
       
       history.pushState({}, '', uri);
     }
   });
+}
+
+window.onpopstate = function(event) {
+
 }

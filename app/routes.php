@@ -45,10 +45,6 @@ Route::group(['prefix' => 'api'], function() {
 
 });
 
-Route::filter('paged', function() {
-  header('X-Paged-Container: .content');
-});
-
 Route::bind('contentType', function($contentTypeId) { return ContentType::findOrFail($contentTypeId); });
 Route::bind('region', function($regionId) { return Region::findOrFail($regionId); });
 Route::bind('block', function($blockId) { return Block::findOrFail($blockId); });
