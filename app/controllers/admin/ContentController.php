@@ -58,7 +58,6 @@ class ContentController extends BaseController {
     }
 
     return Redirect::route('admin_show_content', $content->id)
-      ->with('X-Paged-Replace', 'true')
       ->with('successMessage', 'Woo!')
     ;
   }
@@ -85,6 +84,7 @@ class ContentController extends BaseController {
 
   public function getShow(Content $content)
   {
+    header('X-Paged-Pop-To: /admin/content/'.$content->id);
     return View::make('admin.content.getNew')
       ->with('contentType', $content->contentType)
       ->with('content', $content)

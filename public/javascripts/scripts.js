@@ -22,7 +22,6 @@ $(document).on('click', 'button', function(event) {
     'name': $(this).attr('name'),
     'value': $(this).attr('value')
   });
-  console.log(data);
   goToPage(event, $(form).attr('action'), $(form).attr('method'), data);
 });
 
@@ -41,10 +40,16 @@ function goToPage(event, href, method, formData)
     data: formData,
     headers: {'X-Paged':'true'},
     success: function(data, code, jqXHR) {
-      if (jqXHR.getResponseHeader('X-Paged-Replace')) {
-        $('.page:not(.back)').html(data);
+      if (jqXHR.getResponseHeader('X-Paged-Pop-To')) {
+        var popToUri = jqXHR.getResponseHeader('X-Paged-Pop-To');
+        var page = $('.page[data-paged-uri="'+popToUri+'"]');
+        if (page.length) {
+          page.html(data).removeClass('back').nextAll('.page').remove();
+          return;
+        }
       }
-      else if (jqXHR.getResponseHeader('X-Paged-Container')) {
+
+      if (jqXHR.getResponseHeader('X-Paged-Container')) {
         $('.page').addClass('back');
         $('.page:not(:has(.shield))').each(function() {
           $(this).append('<a class="shield" href="'+$(this).attr('data-paged-uri')+'" />');
