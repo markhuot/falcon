@@ -44,25 +44,25 @@ function goToPage(event, href, method, formData)
         $('.page').remove();
       }
 
-      // for (i=1; i<10; i++) {
-      //   var key = 'X-Paged-Refresh'+(i>1?i:'');
-      //   if (jqXHR.getResponseHeader(key)) {
-      //     var refreshUri = jqXHR.getResponseHeader(key);
-      //     var page = $('.page[data-paged-uri="'+refreshUri+'"]');
-      //     if (page.length) {
-      //       $.ajax({
-      //         url: page.attr('paged-data-uri'),
-      //         type: 'get',
-      //         data: {},
-      //         headers: {'X-Paged':'true'},
-      //         success: function(data, code, jqXHR) {
-      //           page.html(data);
-      //         }
-      //       });
-      //       continue;
-      //     }
-      //   }
-      // }
+      for (i=1; i<10; i++) {
+        var key = 'X-Paged-Refresh'+(i>1?i:'');
+        if (jqXHR.getResponseHeader(key)) {
+          var refreshUri = jqXHR.getResponseHeader(key);
+          $('.page[data-paged-uri="'+refreshUri+'"]').each(function() {
+            var page = $(this);
+            $.ajax({
+              url: page.attr('paged-data-uri'),
+              type: 'get',
+              data: {},
+              headers: {'X-Paged':'true'},
+              success: function(data, code, jqXHR) {
+                page.find('> :not(.shield)').remove();
+                page.prepend(data);
+              }
+            });
+          });
+        }
+      }
 
       for (i=1; i<10; i++) {
         var key = 'X-Paged-Pop-To'+(i>1?i:'');
