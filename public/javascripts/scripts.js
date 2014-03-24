@@ -44,6 +44,18 @@ function goToPage(event, href, method, formData)
         $('.page').remove();
       }
 
+      // for (i=1; i<10; i++) {
+      //   var key = 'X-Paged-Refresh'+(i>1?i:'');
+      //   if (jqXHR.getResponseHeader(key)) {
+      //     var refreshUri = jqXHR.getResponseHeader(key);
+      //     var page = $('.page[data-paged-uri^="'+refreshUri+'"]');
+      //     if (page.length) {
+      //       page.load(page.attr('data-paged-uri'));
+      //       continue;
+      //     }
+      //   }
+      // }
+
       for (i=1; i<10; i++) {
         var key = 'X-Paged-Pop-To'+(i>1?i:'');
         if (jqXHR.getResponseHeader(key)) {
