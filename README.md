@@ -1,5 +1,14 @@
 ## Falcon
 
+# Todo
+
+1. Hover on back pages needs to reveal more.
+2. Updating a current page needs to refresh back pages too. Probably with an `X-Paged-Refresh: /content` header.
+3. Ajax loading a new page needs to scroll to the top.
+4. Refreshing a background page needs to preserve scroll, as best we can.
+
+----
+
 Falcon is a content management system to it's core. It doesn't bother with front-end templates or XXXX.
 
 Falcon is broken down into three major components:
