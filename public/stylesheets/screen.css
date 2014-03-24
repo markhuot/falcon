@@ -103,3 +103,9 @@ fieldset {
     background: rgba(0, 0, 0, 0.6); }
   .page + .page + .page + .page + .page + .page:hover {
     margin-left: 50%; }
+
+.messages {
+  margin: 0 0 40px; }
+  .messages .success {
+    background: #0f0;
+    padding: 10px; }

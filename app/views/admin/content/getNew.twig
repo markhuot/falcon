@@ -1,14 +1,6 @@
 {% extends layout %}
 
 {% block content %}
-	{% if successMessage %}
-		<div class="messages">
-			<div class="success">
-				<p>{{ successMessage }}</p>
-			</div>
-		</div>
-	{% endif %}
-
 	<form action="{{ URL_route('admin_post_content', content.id) }}" method="post">
 	<input type="hidden" name="contentType[id]" value="{{ contentType.id }}" />
 	{% for region in contentType.regions %}

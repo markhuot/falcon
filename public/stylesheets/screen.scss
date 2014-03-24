@@ -94,3 +94,12 @@ fieldset {
 .page + .page + .page + .page { margin-left: 30%; .shield { background: rgba(0,0,0,0.4) } &:hover { margin-left: 30%; } }
 .page + .page + .page + .page + .page { margin-left: 40%; .shield { background: rgba(0,0,0,0.5) } &:hover { margin-left: 40%; } }
 .page + .page + .page + .page + .page + .page { margin-left: 50%; .shield { background: rgba(0,0,0,0.6) } &:hover { margin-left: 50%; } }
+
+.messages {
+  margin: 0 0 40px;
+
+  .success {
+    background: #0f0;
+    padding: 10px;
+  }
+}

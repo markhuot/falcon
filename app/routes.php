@@ -47,6 +47,10 @@ Route::group(['prefix' => 'api'], function() {
 
 Route::filter('paged', function() {
   header('X-Paged-Container: .content');
+
+  if ($xPagedReplace=Session::get('X-Paged-Replace')) {
+    header('X-Paged-Replace: '.$xPagedReplace);
+  }
 });
 
 Route::bind('contentType', function($contentTypeId) { return ContentType::findOrFail($contentTypeId); });
@@ -55,9 +59,7 @@ Route::bind('block', function($blockId) { return Block::findOrFail($blockId); })
 Route::bind('content', function($contentId) { return Content::findOrFail($contentId); });
 Route::bind('region', function($regionId) { return Region::findOrFail($regionId); });
 
-View::composer('admin._navigation', function($view)
-{
-  $view->with('contentTypes', ContentType::all());
-});
+View::composer('admin._navigation', function($view) { $view->with('contentTypes', ContentType::all()); });
+View::composer('admin._messages', function($view) { $view->with('successMessage', Session::get('successMessage')); });
 
 View::share('layout', Request::header('X-Paged')!=true?'admin._layout':'admin._stub');
