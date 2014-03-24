@@ -6,6 +6,7 @@ class ContentTypeController extends \BaseController {
 
   public function getList()
   {
+    header('X-Paged-Pop-All: true');
     return \View::make('admin.content-type.getList')
       ->with('contentTypes', \ContentType::all())
     ;

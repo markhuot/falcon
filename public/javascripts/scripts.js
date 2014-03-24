@@ -40,6 +40,10 @@ function goToPage(event, href, method, formData)
     data: formData,
     headers: {'X-Paged':'true'},
     success: function(data, code, jqXHR) {
+      if (jqXHR.getResponseHeader('X-Paged-Pop-All')) {
+        $('.page').remove();
+      }
+
       if (jqXHR.getResponseHeader('X-Paged-Pop-To')) {
         var popToUri = jqXHR.getResponseHeader('X-Paged-Pop-To');
         var page = $('.page[data-paged-uri="'+popToUri+'"]');

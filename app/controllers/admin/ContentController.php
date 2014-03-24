@@ -9,6 +9,7 @@ use ContentType;
 use Input;
 use Redirect;
 use Region;
+use Request;
 use Session;
 use View;
 
@@ -18,6 +19,7 @@ class ContentController extends BaseController {
   {
     $content = @$contentType->content ?: \Content::all();
 
+    header('X-Paged-Pop-All: true');
     return View::make('admin.content.getList')
       ->with('content', $content)
       ->with('contentTypes', ContentType::all())
@@ -84,7 +86,7 @@ class ContentController extends BaseController {
 
   public function getShow(Content $content)
   {
-    header('X-Paged-Pop-To: /admin/content/'.$content->id);
+    header('X-Paged-Pop-To: /'.Request::path());
     return View::make('admin.content.getNew')
       ->with('contentType', $content->contentType)
       ->with('content', $content)
